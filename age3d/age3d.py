@@ -3,27 +3,25 @@ import numpy as np
 import heapq
 # print(o3d.__version__)
 
-def import_mesh(file_path):
+def import_mesh(file_path:str):
     mesh = o3d.io.read_triangle_mesh(file_path)
-    print(type(mesh))
     return mesh
 
 def clean_mesh(mesh):
     mesh.merge_close_vertices(0.01)
     return
 
-def mesh_details(mesh):
-    print(np.asarray(mesh.vertices))
-    print(np.asarray(mesh.triangles))
+def mesh_details(mesh)->tuple[np.ndarray, np.ndarray]:
+    return (np.asarray(mesh.vertices), np.asarray(mesh.triangles))
 
-def visualize(entries):
+def visualize(entries)->None:
     if type(entries) is not list:
         o3d.visualization.draw_geometries([entries])
     else:
         o3d.visualization.draw_geometries(entries)
         return
 
-def find_minimum(mesh, k = 1):
+def find_minimum(mesh, k:int = 1)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
@@ -34,7 +32,7 @@ def find_minimum(mesh, k = 1):
         i+= 1
     return np.array([vertex for (_, _, vertex) in heapq.nsmallest(k, heap)]).reshape((-1, 3))
 
-def find_all_below(mesh, value):
+def find_all_below(mesh, value)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
@@ -44,7 +42,7 @@ def find_all_below(mesh, value):
             res.append(vertex)
     return np.array(res).reshape((-1, 3))
 
-def find_all_above(mesh, value):
+def find_all_above(mesh, value:float)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
@@ -54,7 +52,7 @@ def find_all_above(mesh, value):
             res.append(vertex)
     return np.array(res).reshape((-1, 3))
 
-def find_all_between(mesh, lower_value, higher_value):
+def find_all_between(mesh, lower_value:float, higher_value:float)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
@@ -70,7 +68,7 @@ def make_point_cloud(vertices, color):
     pc.paint_uniform_color(np.array(color) / 255 )
     return pc
 
-def find_neighbors(mesh, index:int):
+def find_neighbors(mesh, index:int)->np.ndarray:
     mesh_triangles_np = np.asarray(mesh.triangles)
     # print('Printing Tris')
     neighbors = []
@@ -81,32 +79,30 @@ def find_neighbors(mesh, index:int):
 
 
 def main():
-    # file_path = 'models/monkey.stl'
-    file_path = 'models/Mount_Fuji.stl'
+    file_path = 'age3d/models/monkey.stl'
+    # file_path = 'models/Mount_Fuji.stl'
 
     mesh = import_mesh(file_path)
-    mesh.compute_vertex_normals()
+    # mesh.compute_vertex_normals()
     
     print(mesh)
-    clean_mesh(mesh)
-    print(mesh)
-
-    mesh_details(mesh)
+    # clean_mesh(mesh)
+    # print(mesh)
 
 
     # vertices = find_minimum(mesh, 10)
-    vertices = find_minimum(mesh, 1000)
-    min_point_cloud = make_point_cloud(vertices, [255,0,0])
+    # vertices = find_minimum(mesh, 1000)
+    # min_point_cloud = make_point_cloud(vertices, [255,0,0])
 
-    threshold = 80000
+    # threshold = 80000
 
-    vertices = find_all_below(mesh, threshold)
-    below_minimum_cloud = make_point_cloud(vertices, [0,0,255])
+    # vertices = find_all_below(mesh, threshold)
+    # below_minimum_cloud = make_point_cloud(vertices, [0,0,255])
 
-    vertices = find_all_above(mesh, threshold)
-    above_minimum_cloud = make_point_cloud(vertices, [0,255,0])
+    # vertices = find_all_above(mesh, threshold)
+    # above_minimum_cloud = make_point_cloud(vertices, [0,255,0])
 
-    visualize([mesh, min_point_cloud, below_minimum_cloud, above_minimum_cloud])
+    # visualize([mesh, min_point_cloud, below_minimum_cloud, above_minimum_cloud])
 
     # lower_threshold = 80000
     # higher_threshold = 80000 * 2
@@ -117,7 +113,7 @@ def main():
     # visualize([mesh, min_point_cloud, between_minimum_cloud])
 
 
-    vertices = find_neighbors(mesh, 0)
+    # vertices = find_neighbors(mesh, 0)
 
 
 
