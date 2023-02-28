@@ -7,6 +7,10 @@ def import_mesh(file_path:str):
     mesh = o3d.io.read_triangle_mesh(file_path)
     return mesh
 
+def export_mesh(file_path:str, mesh):
+    o3d.io.write_triangle_mesh(file_path, mesh)
+    return
+
 def clean_mesh(mesh):
     mesh.merge_close_vertices(0.01)
     return
@@ -32,24 +36,34 @@ def find_minimum(mesh, k:int = 1)->np.ndarray:
         i+= 1
     return np.array([vertex for (_, _, vertex) in heapq.nsmallest(k, heap)]).reshape((-1, 3))
 
-def find_all_below(mesh, value)->np.ndarray:
+def find_all_below(mesh, value, inclusive = False)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
     res = []
-    for vertex in mesh_vertices_np:
-        if vertex[2] < value:
-            res.append(vertex)
+    if inclusive:
+        for vertex in mesh_vertices_np:
+            if vertex[2] <= value:
+                res.append(vertex)
+    else:
+        for vertex in mesh_vertices_np:
+            if vertex[2] < value:
+                res.append(vertex)
     return np.array(res).reshape((-1, 3))
 
-def find_all_above(mesh, value:float)->np.ndarray:
+def find_all_above(mesh, value:float, inclusive = False)->np.ndarray:
     mesh_vertices_np = np.asarray(mesh.vertices)
     # print(mesh_vertices_np, type(mesh.vertices))
     
     res = []
-    for vertex in mesh_vertices_np:
-        if vertex[2] > value:
-            res.append(vertex)
+    if inclusive:
+        for vertex in mesh_vertices_np:
+            if vertex[2] >= value:
+                res.append(vertex)
+    else:
+        for vertex in mesh_vertices_np:
+            if vertex[2] > value:
+                res.append(vertex)
     return np.array(res).reshape((-1, 3))
 
 def find_all_between(mesh, lower_value:float, higher_value:float)->np.ndarray:
@@ -83,11 +97,18 @@ def main():
     # file_path = 'models/Mount_Fuji.stl'
 
     mesh = import_mesh(file_path)
-    # mesh.compute_vertex_normals()
+    mesh.compute_vertex_normals()
     
     print(mesh)
-    # clean_mesh(mesh)
-    # print(mesh)
+    clean_mesh(mesh)
+    print(mesh)
+
+    # mesh.compute_vertex_normals()
+    export_mesh('age3d/models/monkey_cleaned.stl', mesh)
+
+    file_path = 'age3d/models/monkey_cleaned.stl'
+    mesh = import_mesh(file_path)
+    print(mesh)
 
 
     # vertices = find_minimum(mesh, 10)
