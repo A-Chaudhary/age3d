@@ -14,7 +14,9 @@ readme = "README.md"
 version = "0.0.1"
 requires-python = ">=3.7"
 
-dependencies = []
+dependencies = [
+    "open3d==0.16.0"
+]
 
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
@@ -48,6 +50,7 @@ develop = [
     "pytest-cov>=2.6.1",
     "twine",
     "wheel",
+    "random"
 ]
 
 [tool.black]
