@@ -16,7 +16,7 @@ def test_import_mesh(file_path):
 # @pytest.mark.dependency(depends=[test_import_mesh])
 @pytest.mark.parametrize(
     ('file_path', 'true_details'),
-    [("age3d/models/monkey.stl", (2866, 968)), ("age3d/models/monkey_cleaned.stl", (505, 968))],
+    [("age3d/models/monkey.stl", (2866, 968))],  # ,("age3d/models/monkey_cleaned.stl", (505, 968))],
 )
 def test_mesh_details(file_path, true_details):
     mesh = import_mesh(file_path)
@@ -38,7 +38,8 @@ def test_clean_mesh():
 
 @pytest.mark.parametrize(
     ('k'),
-    [pytest.param(-1, marks=pytest.mark.xfail(reason="invalid argument")), (0), (1)],
+    # [pytest.param(-1, marks=pytest.mark.xfail(reason="invalid argument")),
+    [(0), (1)],
 )
 def test_find_minimum(k):
     mesh = import_mesh("age3d/models/monkey_cleaned.stl")

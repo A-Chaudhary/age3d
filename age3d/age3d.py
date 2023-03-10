@@ -20,7 +20,7 @@ def clean_mesh(mesh):
     return
 
 
-def mesh_details(mesh) -> tuple[np.ndarray, np.ndarray]:
+def mesh_details(mesh) -> tuple:
     return (np.asarray(mesh.vertices), np.asarray(mesh.triangles))
 
 

@@ -2,6 +2,7 @@ graft age3d
 
 include LICENSE
 include README.md
+include CONTRIBUTING.md
 
 include .bumpversion.cfg
 include pyproject.toml
@@ -10,6 +11,8 @@ include Makefile
 prune .github
 exclude .gitignore
 exclude .gitattributes
+exclude age3d/models/Mount_Fuji.stl
+exclude age3d/models/cube.stl
 
 # Patterns to exclude from any directory
 global-exclude *~

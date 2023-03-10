@@ -2,9 +2,9 @@ import age3d
 
 if __name__ == "__main__":
     print('ran main')
-    # file_path = 'models/Mount_Fuji.stl'
+    file_path = 'models/monkey.stl'
 
-    # mesh = import_mesh(file_path)
+    mesh = age3d.import_mesh(file_path)
     # mesh.compute_vertex_normals()
 
     # print(mesh)

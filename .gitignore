@@ -130,3 +130,7 @@ dmypy.json
 
 # vscode settings
 .vscode/
+
+# model files
+age3d/models/Mount_Fuji.stl
+age3d/models/cube.stl
