@@ -5,39 +5,28 @@ if __name__ == "__main__":
     file_path = 'models/monkey.stl'
 
     mesh = age3d.import_mesh(file_path)
+    mesh.compute_vertex_normals()
+
+    # # np.save('tests/monkey_vertices', np.asarray(mesh.vertices))
+    # # np.save('tests/monkey_triangles', np.asarray(mesh.triangles))
+
+    # print(mesh)
+    # age3d.clean_mesh(mesh)
+    # print(mesh)
+    # mesh = age3d.mesh_subdivision(mesh, 3)
+    # print(mesh)
+    # print('-----------------')
+
+    # vertices_idx, vertices = age3d.find_all_above(mesh, age3d.calculate_bounds_height(mesh), True)
+    # above_point_cloud = age3d.make_point_cloud(vertices, [0, 255, 0])
+
+    # # vertices_idx, mesh = age3d.erode(mesh, 200, 10)
+    # vertices_idx, new_mesh = age3d.erode(mesh, 10, 10)
     # mesh.compute_vertex_normals()
-
-    # print(mesh)
-    # clean_mesh(mesh)
-    # print(mesh)
-
-    # mesh.compute_vertex_normals()
-    # export_mesh('age3d/models/monkey_cleaned.stl', mesh)
-
-    # file_path = 'age3d/models/monkey_cleaned.stl'
-    # mesh = import_mesh(file_path)
-    # print(mesh)
-
-    # vertices = find_minimum(mesh, 10)
-    # vertices = find_minimum(mesh, 1000)
-    # min_point_cloud = make_point_cloud(vertices, [255,0,0])
-
-    # threshold = 80000
-
-    # vertices = find_all_below(mesh, threshold)
-    # below_minimum_cloud = make_point_cloud(vertices, [0,0,255])
-
-    # vertices = find_all_above(mesh, threshold)
-    # above_minimum_cloud = make_point_cloud(vertices, [0,255,0])
-
-    # visualize([mesh, min_point_cloud, below_minimum_cloud, above_minimum_cloud])
-
-    # lower_threshold = 80000
-    # higher_threshold = 80000 * 2
-
-    # vertices = find_all_between(mesh, lower_threshold, higher_threshold)
-    # between_minimum_cloud = make_point_cloud(vertices, [0,0,255])
-
-    # visualize([mesh, min_point_cloud, between_minimum_cloud])
-
-    # vertices = find_neighbors(mesh, 0)
+    # point_cloud = age3d.make_point_cloud(np.asarray(new_mesh.vertices)[vertices_idx], [255, 0, 0])
+    # # age3d.visualize([mesh, above_point_cloud, point_cloud], True)
+    # # age3d.visualize([mesh, above_point_cloud, point_cloud], False)
+    # age3d.visualize([mesh, point_cloud], True)
+    # # age3d.visualize([mesh, point_cloud], False)
+    # age3d.visualize([mesh], True)
+    # age3d.visualize([mesh], False)
