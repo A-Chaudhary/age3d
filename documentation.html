@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Functions &mdash; age3d 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            age3d
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.calculate_bounds_height"><code class="docutils literal notranslate"><span class="pre">calculate_bounds_height()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.clean_mesh"><code class="docutils literal notranslate"><span class="pre">clean_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.erode"><code class="docutils literal notranslate"><span class="pre">erode()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.export_mesh"><code class="docutils literal notranslate"><span class="pre">export_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_above"><code class="docutils literal notranslate"><span class="pre">find_all_above()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_below"><code class="docutils literal notranslate"><span class="pre">find_all_below()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_between"><code class="docutils literal notranslate"><span class="pre">find_all_between()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_maximum"><code class="docutils literal notranslate"><span class="pre">find_maximum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_minimum"><code class="docutils literal notranslate"><span class="pre">find_minimum()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_neighbors"><code class="docutils literal notranslate"><span class="pre">find_neighbors()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.get_mask"><code class="docutils literal notranslate"><span class="pre">get_mask()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.import_mesh"><code class="docutils literal notranslate"><span class="pre">import_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.make_point_cloud"><code class="docutils literal notranslate"><span class="pre">make_point_cloud()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.mesh_details"><code class="docutils literal notranslate"><span class="pre">mesh_details()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.mesh_subdivision"><code class="docutils literal notranslate"><span class="pre">mesh_subdivision()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.visualize"><code class="docutils literal notranslate"><span class="pre">visualize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">age3d</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/documentation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-age3d">
+<span id="functions"></span><h1>Functions<a class="headerlink" href="#module-age3d" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.calculate_bounds_height">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">calculate_bounds_height</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.calculate_bounds_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the minimum z-coordinate of the vertices at the boundary of the given mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – A triangle mesh object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The minimum z-coordinate of the vertices at the boundary of the given mesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.clean_mesh">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">clean_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.clean_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge the close vertices of a mesh to remove noise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mesh</strong> – The mesh to be cleaned.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.erode">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">erode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erosion_lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.erode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erodes the mesh using the particle deposition and erosion method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The mesh to be eroded.</p></li>
+<li><p><strong>iterations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of iterations for the erosion process. Defaults to 2.</p></li>
+<li><p><strong>erosion_lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of times a vertex can be eroded. Defaults to 10.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the updated vertex
+indices and the eroded mesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, open3d.geometry.TriangleMesh]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.export_mesh">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">export_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.export_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export a mesh to a given file path using the open3d library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – The file path where the mesh will be saved.</p></li>
+<li><p><strong>mesh</strong> – The mesh to be exported.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_all_above">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_all_above</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_all_above" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all the vertices above the given value in the z-coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The input mesh.</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – The value above which to find vertices.</p></li>
+<li><p><strong>inclusive</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include vertices with value equal to the given value. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two numpy arrays, one containing the indices and the other containing the vertices that are above the
+given value in the z-coordinate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_all_below">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_all_below</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_all_below" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all the vertices below the given value in the z-coordinate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The input mesh.</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – The value below which to find vertices.</p></li>
+<li><p><strong>inclusive</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to include vertices with value equal to the given value. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two numpy arrays, one containing the indices and the other containing the vertices that are below the
+given value in the z-coordinate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_all_between">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_all_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">higher_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#age3d.find_all_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a NumPy array of vertices whose z-coordinate is between the given lower and higher values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – A triangle mesh object.</p></li>
+<li><p><strong>lower_value</strong> (<em>float</em>) – The lower bound of the z-coordinate.</p></li>
+<li><p><strong>higher_value</strong> (<em>float</em>) – The higher bound of the z-coordinate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A NumPy array of vertices whose z-coordinate is between the given lower and higher values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_maximum">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_maximum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the maximum value(s) and corresponding index(s) in the z-coordinate of the mesh’s vertices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The input mesh.</p></li>
+<li><p><strong>k</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of maximum values to return. Defaults to 1.</p></li>
+<li><p><strong>idx_mask</strong> (<em>list</em><em>, </em><em>optional</em>) – List of vertex indices to consider for the maximum search. Defaults to empty list.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Two numpy arrays, one containing the index(s) of the maximum value(s) and the other containing
+the maximum value(s) in the z-coordinate of the mesh’s vertices.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_minimum">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_minimum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the k number of vertices having minimum z-coordinate of a mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The input mesh.</p></li>
+<li><p><strong>k</strong> (<em>int</em><em>, </em><em>optional</em>) – </p></li>
+<li><p><strong>idx_mask</strong> (<em>list</em><em>, </em><em>optional</em>) – A list of indices of vertices to be considered for finding minimum vertices.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple of two numpy arrays. The first array contains the indices of the minimum</dt><dd><p>vertices and the second array contains the coordinates of the minimum vertices.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_neighbors">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the indices and coordinates of the neighboring vertices of the given vertex index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – A triangle mesh object.</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – The index of the vertex.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of two NumPy arrays
+representing the neighboring vertex indices and coordinates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.get_mask">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">get_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.get_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a mask array for a specific vertex of the mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> – The mesh for which the mask is to be created.</p></li>
+<li><p><strong>idx</strong> – The index of the vertex for which the mask is to be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A boolean mask array with True value for the given index and False for all</dt><dd><p>other vertices of the mesh.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.import_mesh">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">import_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.import_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports stl file as Mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – file path of stl file</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.make_point_cloud">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">make_point_cloud</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.make_point_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a point cloud object with the given vertices and color.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>np.ndarray</em>) – A NumPy array of vertices.</p></li>
+<li><p><strong>color</strong> (<em>tuple</em>) – A tuple of RGB values (0-255).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A point cloud object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>open3d.geometry.PointCloud</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.mesh_details">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">mesh_details</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#age3d.mesh_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve details of a mesh in the form of numpy arrays for vertices and triangles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mesh</strong> – The mesh for which the details are to be extracted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple of two numpy arrays. The first array contains the vertices of the mesh</dt><dd><p>and the second array contains the triangles of the mesh.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.mesh_subdivision">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">mesh_subdivision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.mesh_subdivision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new triangle mesh object obtained by subdividing the given mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – A triangle mesh object.</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – The number of times to subdivide the mesh.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new triangle mesh object obtained by subdividing the given mesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>open3d.geometry.TriangleMesh</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.visualize">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_wireframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#age3d.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualize a single mesh or a list of meshes using the open3d library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entries</strong> – The mesh/meshes to be visualized. It can be a single mesh or a list of meshes.</p></li>
+<li><p><strong>show_wireframe</strong> (<em>bool</em>) – A flag to show/hide the wireframe of the mesh/meshes.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Abhishek Chaudhary.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; age3d 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions" href="documentation.html" />
+    <link rel="prev" title="age3d: A 3D Simulation for Erosion" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            age3d
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#erosion">Erosion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#point-cloud-creation">Point Cloud Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Functions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">age3d</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting_started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p>The recommended way to install age3d is through pip.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">age3d</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<p>Import the library:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">age3d</span>
+</pre></div>
+</div>
+<p>Import a <cite>.stl</cite> model where <cite>file_path</cite> points to the location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">age3d</span><span class="o">.</span><span class="n">import_mesh</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="erosion">
+<h2>Erosion<a class="headerlink" href="#erosion" title="Permalink to this heading">¶</a></h2>
+<p>If the <cite>mesh</cite> is low-poly, run with <cite>number_of_subdivisions &gt; 0</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">age3d</span><span class="o">.</span><span class="n">mesh_subdivision</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">number_of_subdivisions</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Erode the <cite>mesh</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eroded_mesh</span> <span class="o">=</span> <span class="n">age3d</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If Erosion with customized Passes and Max Particle Lifetime:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">updated_vertices</span><span class="p">,</span> <span class="n">eroded_mesh</span> <span class="o">=</span> <span class="n">age3d</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">erosion_lifetime</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="point-cloud-creation">
+<h2>Point Cloud Creation<a class="headerlink" href="#point-cloud-creation" title="Permalink to this heading">¶</a></h2>
+<p>Make a <cite>PointCloud</cite> with Red Color Points:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">point_cloud</span> <span class="o">=</span> <span class="n">age3d</span><span class="o">.</span><span class="n">make_point_cloud</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">¶</a></h2>
+<p>Visualize Eroded Mesh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eroded_mesh</span><span class="o">.</span><span class="n">compute_vertex_normals</span><span class="p">()</span>
+<span class="n">age3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eroded_mesh</span><span class="o">.</span><span class="n">compute_vertex_normals</span><span class="p">()</span>
+<span class="n">age3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">([</span><span class="n">mesh</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Visualize Mesh &amp; Point Cloud:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eroded_mesh</span><span class="o">.</span><span class="n">compute_vertex_normals</span><span class="p">()</span>
+<span class="n">age3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">([</span><span class="n">mesh</span><span class="p">,</span> <span class="n">point_cloud</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Visualize Mesh &amp; Point Cloud with Wireframe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eroded_mesh</span><span class="o">.</span><span class="n">compute_vertex_normals</span><span class="p">()</span>
+<span class="n">age3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">([</span><span class="n">mesh</span><span class="p">,</span> <span class="n">point_cloud</span><span class="p">],</span> <span class="n">show_wireframe</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="age3d: A 3D Simulation for Erosion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documentation.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Abhishek Chaudhary.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
