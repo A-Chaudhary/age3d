@@ -8,6 +8,8 @@ A Python Library to age 3d models by simulating the effects of weather
 [![PyPI](https://img.shields.io/pypi/v/age3d)](https://pypi.org/project/age3d/)
 [![Documentation Status](https://readthedocs.org/projects/age3d/badge/?version=latest)](https://age3d.readthedocs.io/en/latest/?badge=latest)
 
+[![Documentation](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://a-chaudhary.github.io/age3d/)
+
 ## Overview
 
 Age3D is a Python Library that allows for eroding of 3d models. It uses the `.stl` file format and incorporates Open3D functionality, allowing users to simulate material removal.
