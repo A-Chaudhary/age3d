@@ -6,7 +6,7 @@ A Python Library to age 3d models by simulating the effects of weather
 [![GitHub](https://img.shields.io/github/license/A-Chaudhary/age3d)](https://github.com/A-Chaudhary/age3d/blob/main/LICENSE)
 [![](https://img.shields.io/github/issues/A-Chaudhary/age3d)](https://github.com/A-Chaudhary/age3d/issues)
 [![PyPI](https://img.shields.io/pypi/v/age3d)](https://pypi.org/project/age3d/)
-
+[![Documentation Status](https://readthedocs.org/projects/age3d/badge/?version=latest)](https://age3d.readthedocs.io/en/latest/?badge=latest)
 
 ## Overview
 
