@@ -76,6 +76,26 @@ dist: clean build dist-build dist-check  ## Build dists
 publish:  # Upload python assets
 	echo "would usually run python -m twine upload dist/* --skip-existing"
 
+########
+# DOCS #
+########
+
+TMPREPO=./tmp/docs/age3d
+
+docs: 
+	$(MAKE) -C docs/ docs
+
+pages: 
+	rm -rf $(TMPREPO)
+	git clone -b gh-pages https://github.com/A-Chaudhary/age3d.git $(TMPREPO)
+	rm -rf $(TMPREPO)/*
+	cp -r docs/_build/html/* $(TMPREPO)
+	cd $(TMPREPO);\
+	git add -A ;\
+	git commit -a -m 'auto-updating docs' ;\
+	git push
+
+
 #########
 # CLEAN #
 #########
@@ -95,4 +115,4 @@ help:
 print-%:
 	@echo '$*=$($*)'
 
-.PHONY: develop build install lint lints format fix check checks annotate test coverage show-coverage tests show-version patch minor major dist-build dist-check dist publish deep-clean clean help
+.PHONY: develop build install lint lints format fix check checks annotate test coverage show-coverage tests show-version patch minor major dist-build dist-check dist publish docs pages deep-clean clean help
