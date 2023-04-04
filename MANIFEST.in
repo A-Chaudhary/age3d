@@ -14,6 +14,11 @@ exclude .gitattributes
 exclude age3d/models/Mount_Fuji.stl
 exclude age3d/models/cube.stl
 
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+
 # Patterns to exclude from any directory
 global-exclude *~
 global-exclude *.pyc
