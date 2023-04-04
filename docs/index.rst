@@ -12,7 +12,7 @@ age3d: A 3D Simulation for Erosion
 
    getting_started
    documentation
-   
+   examples
 
 
 Indices and tables
