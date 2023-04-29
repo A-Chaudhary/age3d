@@ -336,6 +336,7 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
         set_vertices_idx.add(idx)
     # print('set', set_vertices_idx)
 
+    # Create New Mesh
     new_mesh = o3d.geometry.TriangleMesh()
     new_vertices = np.asarray(mesh.vertices)
     new_triangles = np.asarray(mesh.triangles)
@@ -348,13 +349,14 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
     rng = np.random.default_rng(10)
 
     for iter_no in range(iterations):
-        v_idx_curr = vertices_idx[int(rng.random() * vertices.shape[0])]
+        v_idx_curr = int(vertices_idx[int(rng.random() * vertices.shape[0])])
         print('Iter: ', iter_no, ', V_idx: ', v_idx_curr)
 
-        lifetime = erosion_lifetime
+        lifetime = 0
         strength = 0.5
-        while lifetime > 0:
-            new_mesh.vertices = o3d.utility.Vector3dVector(new_vertices)
+        v_idx_prev = None
+
+        while lifetime < erosion_lifetime:
             neighbors_idx, _ = find_neighbors(new_mesh, v_idx_curr)
             v_idx_next = int(find_minimum(new_mesh, 1, neighbors_idx)[0])
 
@@ -362,14 +364,47 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
                 break
 
             # if #TODO Angle Calculations
+            if v_idx_prev:
+                print(
+                    v_idx_prev,
+                    v_idx_curr,
+                    v_idx_next,
+                    type(new_vertices[v_idx_prev]),
+                    new_vertices[v_idx_prev],
+                    new_vertices[v_idx_curr],
+                    new_vertices[v_idx_next],
+                )
+                vector_1 = new_vertices[v_idx_curr] - new_vertices[v_idx_prev]
+                vector_2 = new_vertices[v_idx_next] - new_vertices[v_idx_curr]
+                direction_1 = np.sign(vector_1)
+                direction_2 = np.sign(vector_2)
+                # print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1 , direction_2))
+
+                if vector_2[2] > 0:
+                    break
+
+                vector_1[2] = 0
+                vector_2[2] = 0
+                norm_vector_1 = np.linalg.norm(vector_1)
+                norm_vector_2 = np.linalg.norm(vector_2)
+                angle = np.arccos(np.clip(np.dot(vector_1, vector_2) / (norm_vector_1 * norm_vector_2), -1.0, 1.0))
+                print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1, direction_2), angle)
+                # if angle < 0:
+                #     print('negative angle', angle)
+                if angle > np.pi / 2:
+                    # print('pi angle', angle)
+                    break
+                # if angle > np.pi / 2
 
             new_vertices[v_idx_curr, 2] -= (
                 strength * abs(new_vertices[v_idx_next, 2] - new_vertices[v_idx_curr, 2]) / mesh_max_height
             )
+            new_mesh.vertices = o3d.utility.Vector3dVector(new_vertices)
             updated_vertices.append(v_idx_curr)
 
-            lifetime -= 1
+            lifetime += 1
             strength *= 0.69
+            v_idx_prev = v_idx_curr
             v_idx_curr = v_idx_next
 
     new_mesh.vertices = o3d.utility.Vector3dVector(new_vertices)
