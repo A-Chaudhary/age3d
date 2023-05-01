@@ -185,10 +185,12 @@ def test_find_neighbors():
     assert all(v_idx == [1, 2])
 
 
-@pytest.mark.parametrize(('file_path'), ["age3d/models/monkey.stl"])
-def test_full_run(file_path):
+@pytest.mark.parametrize(
+    ('file_path', 'verbose'), [("age3d/models/monkey.stl", ['all']), ("age3d/models/monkey.stl", [])]
+)
+def test_full_run(file_path, verbose):
     mesh = age3d.import_mesh(file_path)
-    mesh = age3d.mesh_subdivision(mesh, 3)
-    _, new_mesh = age3d.erode(mesh, 10, 10)
+    mesh = age3d.mesh_subdivision(mesh, 2)
+    _, new_mesh = age3d.erode(mesh, iterations=50, erosion_lifetime=10, verbose=verbose)
 
     assert all(np.asarray(mesh.triangles).flatten() == np.asarray(new_mesh.triangles).flatten())

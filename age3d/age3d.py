@@ -13,7 +13,7 @@ def import_mesh(file_path: str):
         file_path (str): file path of stl file
 
     Returns:
-
+        mesh (open3d.geometry.TriangleMesh): Mesh to be processed.
     """
     mesh = o3d.io.read_triangle_mesh(file_path)
     return mesh
@@ -314,7 +314,7 @@ def calculate_bounds_height(mesh):
     return min(min_x_vertex[2], max_x_vertex[2], min_y_vertex[2], max_y_vertex[2])
 
 
-def erode(mesh, iterations=2, erosion_lifetime=10):
+def erode(mesh: o3d.geometry.TriangleMesh, iterations: int = 2, erosion_lifetime: int = 10, verbose: list = []):
     """
     Erodes the mesh using the particle deposition and erosion method.
 
@@ -322,12 +322,29 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
         mesh (open3d.geometry.TriangleMesh): The mesh to be eroded.
         iterations (int, optional): The number of iterations for the erosion process. Defaults to 2.
         erosion_lifetime (int, optional): The maximum number of times a vertex can be eroded. Defaults to 10.
+        verbose (list[str], optional): A list of strings containing information to be printed.
+            Possible strings include 'all', 'vertex_progression', 'vector_direction',
+            'vector_angle', 'ray', 'ray_scene', 'mesh', and 'collision'.
+            Defaults to an empty list.
 
     Returns:
         Tuple[np.ndarray, open3d.geometry.TriangleMesh]: A tuple containing the updated vertex
         indices and the eroded mesh.
+
+    The `verbose` argument takes a list of strings that specify what information should be printed.
+        - 'all': Prints all below.
+        - 'vertex_progression': Prints information about vertex triples.
+        - 'vector_direction': Prints information about vector directions.
+        - 'vector_angle': Prints information about vector angles.
+        - 'ray': Prints information about the ray being casted.
+        - 'ray_scene': Prints information about the raycasting scene.
+        - 'mesh': Prints information about the mesh.
+        - 'collision': Prints information about the collision detection.
     """
     # total_vertex_count = np.asarray(mesh.vertices).shape[0]
+    verbose = set(verbose)
+    if len(verbose) > 0:
+        print('Printing with Settings:', verbose)
 
     vertices_idx, vertices = find_all_above(mesh, calculate_bounds_height(mesh), True)
 
@@ -363,22 +380,24 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
             if v_idx_next not in vertices_idx:
                 break
 
-            # if #TODO Angle Calculations
             if v_idx_prev:
-                print(
-                    v_idx_prev,
-                    v_idx_curr,
-                    v_idx_next,
-                    type(new_vertices[v_idx_prev]),
-                    new_vertices[v_idx_prev],
-                    new_vertices[v_idx_curr],
-                    new_vertices[v_idx_next],
-                )
+                if 'vertex_progression' in verbose or 'all' in verbose:
+                    print(
+                        'Vertex Triples:',
+                        v_idx_prev,
+                        v_idx_curr,
+                        v_idx_next,
+                        type(new_vertices[v_idx_prev]),
+                        new_vertices[v_idx_prev],
+                        new_vertices[v_idx_curr],
+                        new_vertices[v_idx_next],
+                    )
                 vector_1 = new_vertices[v_idx_curr] - new_vertices[v_idx_prev]
                 vector_2 = new_vertices[v_idx_next] - new_vertices[v_idx_curr]
                 direction_1 = np.sign(vector_1)
                 direction_2 = np.sign(vector_2)
-                # print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1 , direction_2))
+                if 'vector_direction' in verbose or 'all' in verbose:
+                    print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1, direction_2))
 
                 if vector_2[2] > 0:
                     break
@@ -388,17 +407,56 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
                 norm_vector_1 = np.linalg.norm(vector_1)
                 norm_vector_2 = np.linalg.norm(vector_2)
                 angle = np.arccos(np.clip(np.dot(vector_1, vector_2) / (norm_vector_1 * norm_vector_2), -1.0, 1.0))
-                print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1, direction_2), angle)
-                # if angle < 0:
-                #     print('negative angle', angle)
+                if 'vector_angle' in verbose or 'all' in verbose:
+                    print(vector_1, vector_2, direction_1, direction_2, np.dot(direction_1, direction_2), angle)
+                    # if angle < 0:
+                    #     print('Negative angle Calculated', angle)
                 if angle > np.pi / 2:
-                    # print('pi angle', angle)
+                    if 'vector_angle' in verbose or 'all' in verbose:
+                        print('Angle found > PI / 2', angle)
                     break
-                # if angle > np.pi / 2
 
-            new_vertices[v_idx_curr, 2] -= (
-                strength * abs(new_vertices[v_idx_next, 2] - new_vertices[v_idx_curr, 2]) / mesh_max_height
-            )
+            ray = o3d.core.Tensor([[*new_vertices[v_idx_curr], 0, 0, 1]], dtype=o3d.core.Dtype.Float32)
+            if 'ray' in verbose or 'all' in verbose:
+                print('ray:', ray, 'vertex:', new_vertices[v_idx_curr])
+
+            ray[0, 2] += 1e-6
+            if 'ray' in verbose or 'all' in verbose:
+                print('updated ray:', ray, 'vertex:', new_vertices[v_idx_curr])
+
+            raycasting_scene = o3d.t.geometry.RaycastingScene()
+            if 'ray_scene' in verbose or 'all' in verbose:
+                print('scene:', raycasting_scene)
+
+            if 'mesh' in verbose or 'all' in verbose:
+                print('new mesh', new_mesh, type(new_mesh))
+            new_mesh_legacy = o3d.t.geometry.TriangleMesh.from_legacy(new_mesh)
+            if 'mesh' in verbose or 'all' in verbose:
+                print('new mesh legacy', new_mesh_legacy, type(new_mesh_legacy))
+
+            mesh_id = raycasting_scene.add_triangles(new_mesh_legacy)
+            if 'mesh' in verbose or 'all' in verbose:
+                print('mesh_id:', mesh_id)
+
+            collision = raycasting_scene.cast_rays(ray)
+            if 'collision' in verbose or 'all' in verbose:
+                print(
+                    'collision t_hit:',
+                    collision['t_hit'],
+                    type(collision['t_hit']),
+                    collision['t_hit'].numpy(),
+                    type(collision['t_hit'].numpy()),
+                )
+
+            if collision['t_hit'].numpy()[0] == np.inf:
+                new_vertices[v_idx_curr, 2] -= (
+                    strength * abs(new_vertices[v_idx_next, 2] - new_vertices[v_idx_curr, 2]) / mesh_max_height
+                )
+            else:
+                new_vertices[v_idx_curr, 2] += (
+                    strength * abs(new_vertices[v_idx_next, 2] - new_vertices[v_idx_curr, 2]) / mesh_max_height
+                )
+
             new_mesh.vertices = o3d.utility.Vector3dVector(new_vertices)
             updated_vertices.append(v_idx_curr)
 
@@ -406,6 +464,9 @@ def erode(mesh, iterations=2, erosion_lifetime=10):
             strength *= 0.69
             v_idx_prev = v_idx_curr
             v_idx_curr = v_idx_next
+
+    if len(verbose) > 0:
+        print('')
 
     new_mesh.vertices = o3d.utility.Vector3dVector(new_vertices)
     new_mesh.triangles = o3d.utility.Vector3iVector(new_triangles)
