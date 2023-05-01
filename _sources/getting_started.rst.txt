@@ -29,7 +29,6 @@ Import a `.stl` model where `file_path` points to the location:
 
 Erosion
 -------
-Erosion simulates particles and uses angle calculations to prevent particles from reversing direction
 
 If the `mesh` is low-poly, run with `number_of_subdivisions > 0`:
 ::

@@ -124,7 +124,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="age3d.erode">
-<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">erode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erosion_lifetime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.erode" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">erode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TriangleMesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erosion_lifetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.erode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Erodes the mesh using the particle deposition and erosion method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -132,6 +132,10 @@
 <li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The mesh to be eroded.</p></li>
 <li><p><strong>iterations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of iterations for the erosion process. Defaults to 2.</p></li>
 <li><p><strong>erosion_lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of times a vertex can be eroded. Defaults to 10.</p></li>
+<li><p><strong>verbose</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of strings containing information to be printed.
+Possible strings include ‘all’, ‘vertex_progression’, ‘vector_direction’,
+‘vector_angle’, ‘ray’, ‘ray_scene’, ‘mesh’, and ‘collision’.
+Defaults to an empty list.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -140,6 +144,19 @@ indices and the eroded mesh.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tuple[np.ndarray, open3d.geometry.TriangleMesh]</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>The <cite>verbose</cite> argument takes a list of strings that specify what information should be printed.</dt><dd><ul class="simple">
+<li><p>‘all’: Prints all below.</p></li>
+<li><p>‘vertex_progression’: Prints information about vertex triples.</p></li>
+<li><p>‘vector_direction’: Prints information about vector directions.</p></li>
+<li><p>‘vector_angle’: Prints information about vector angles.</p></li>
+<li><p>‘ray’: Prints information about the ray being casted.</p></li>
+<li><p>‘ray_scene’: Prints information about the raycasting scene.</p></li>
+<li><p>‘mesh’: Prints information about the mesh.</p></li>
+<li><p>‘collision’: Prints information about the collision detection.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -326,8 +343,13 @@ representing the neighboring vertex indices and coordinates.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – file path of stl file</p>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Mesh to be processed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mesh (open3d.geometry.TriangleMesh)</p>
+</dd>
 </dl>
-<p>Returns:</p>
 </dd></dl>
 
 <dl class="py function">
