@@ -158,7 +158,57 @@ Examples
          array([ True,  True, False, False, False, False, False, False, False,
                 False, False, False, False, False, False, False, False, False,
                 False, False, False, False, False, False, False, False, False,
-                ...
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
+                False, False, False, False, False, False, False, False, False,
                 False, False, False, False, False, False, False, False, False,
                 False, False, False, False, False, False, False, False, False,
                  True])
@@ -299,23 +349,6 @@ Examples
 
 .. container:: cell markdown
 
-   .. rubric:: Find Accessible
-      :name: find-accessible
-
-.. container:: cell code
-
-   .. code:: python
-
-      direction = [0, 0, -1]
-      accessible_idx, accessible_vertices = a3d.find_accessible(mesh, direction)
-      accessible_pc = a3d.make_point_cloud(accessible_vertices, (255, 0, 0))
-      a3d.visualize([mesh, accessible_pc], show_wireframe=True)
-
-.. image:: img/monkey_accessible.png
-  :alt: Monkey Erode Wirefram Direction 
-
-.. container:: cell markdown
-
    .. rubric:: Erode
       :name: erode
 
@@ -340,7 +373,100 @@ Examples
       Iter:  0 , V_idx:  7569
       Iter:  1 , V_idx:  1537
       Iter:  2 , V_idx:  6081
-      ...
+      Iter:  3 , V_idx:  1202
+      Iter:  4 , V_idx:  4516
+      Iter:  5 , V_idx:  1168
+      Iter:  6 , V_idx:  5715
+      Iter:  7 , V_idx:  6116
+      Iter:  8 , V_idx:  3095
+      Iter:  9 , V_idx:  7572
+      Iter:  10 , V_idx:  6073
+      Iter:  11 , V_idx:  2458
+      Iter:  12 , V_idx:  4677
+      Iter:  13 , V_idx:  5880
+      Iter:  14 , V_idx:  6078
+      Iter:  15 , V_idx:  7146
+      Iter:  16 , V_idx:  1191
+      Iter:  17 , V_idx:  5861
+      Iter:  18 , V_idx:  1177
+      Iter:  19 , V_idx:  6651
+      Iter:  20 , V_idx:  1634
+      Iter:  21 , V_idx:  6353
+      Iter:  22 , V_idx:  2341
+      Iter:  23 , V_idx:  7677
+      Iter:  24 , V_idx:  4529
+      Iter:  25 , V_idx:  2410
+      Iter:  26 , V_idx:  2280
+      Iter:  27 , V_idx:  4923
+      Iter:  28 , V_idx:  2447
+      Iter:  29 , V_idx:  5688
+      Iter:  30 , V_idx:  1257
+      Iter:  31 , V_idx:  1946
+      Iter:  32 , V_idx:  6396
+      Iter:  33 , V_idx:  4909
+      Iter:  34 , V_idx:  2217
+      Iter:  35 , V_idx:  1203
+      Iter:  36 , V_idx:  1170
+      Iter:  37 , V_idx:  1944
+      Iter:  38 , V_idx:  2986
+      Iter:  39 , V_idx:  5034
+      Iter:  40 , V_idx:  6105
+      Iter:  41 , V_idx:  5938
+      Iter:  42 , V_idx:  2461
+      Iter:  43 , V_idx:  1200
+      Iter:  44 , V_idx:  3175
+      Iter:  45 , V_idx:  3126
+      Iter:  46 , V_idx:  4673
+      Iter:  47 , V_idx:  2961
+      Iter:  48 , V_idx:  4995
+      Iter:  49 , V_idx:  814
+      Iter:  50 , V_idx:  1696
+      Iter:  51 , V_idx:  5916
+      Iter:  52 , V_idx:  7721
+      Iter:  53 , V_idx:  6020
+      Iter:  54 , V_idx:  6120
+      Iter:  55 , V_idx:  5988
+      Iter:  56 , V_idx:  3174
+      Iter:  57 , V_idx:  5842
+      Iter:  58 , V_idx:  4684
+      Iter:  59 , V_idx:  3159
+      Iter:  60 , V_idx:  2251
+      Iter:  61 , V_idx:  6382
+      Iter:  62 , V_idx:  572
+      Iter:  63 , V_idx:  6042
+      Iter:  64 , V_idx:  6426
+      Iter:  65 , V_idx:  3089
+      Iter:  66 , V_idx:  6094
+      Iter:  67 , V_idx:  2465
+      Iter:  68 , V_idx:  4534
+      Iter:  69 , V_idx:  4609
+      Iter:  70 , V_idx:  1499
+      Iter:  71 , V_idx:  2445
+      Iter:  72 , V_idx:  2267
+      Iter:  73 , V_idx:  3176
+      Iter:  74 , V_idx:  5678
+      Iter:  75 , V_idx:  5701
+      Iter:  76 , V_idx:  4544
+      Iter:  77 , V_idx:  3194
+      Iter:  78 , V_idx:  4506
+      Iter:  79 , V_idx:  2423
+      Iter:  80 , V_idx:  1448
+      Iter:  81 , V_idx:  2323
+      Iter:  82 , V_idx:  5032
+      Iter:  83 , V_idx:  500
+      Iter:  84 , V_idx:  4994
+      Iter:  85 , V_idx:  2271
+      Iter:  86 , V_idx:  1482
+      Iter:  87 , V_idx:  4336
+      Iter:  88 , V_idx:  2900
+      Iter:  89 , V_idx:  767
+      Iter:  90 , V_idx:  5767
+      Iter:  91 , V_idx:  5978
+      Iter:  92 , V_idx:  347
+      Iter:  93 , V_idx:  4975
+      Iter:  94 , V_idx:  1947
+      Iter:  95 , V_idx:  3099
+      Iter:  96 , V_idx:  5975
       Iter:  97 , V_idx:  4564
       Iter:  98 , V_idx:  113
       Iter:  99 , V_idx:  130
@@ -354,37 +480,3 @@ Examples
 .. image:: img/monkey_erode.png
   :alt: Monkey Erode
 
-.. container:: cell code
-
-   .. code:: python
-
-      updated_idxs, eroded_mesh = a3d.erode(mesh, iterations=100, erosion_lifetime=10, direction=direction)
-      eroded_mesh.compute_vertex_normals()
-
-      updated_pc = a3d.make_point_cloud(vertices[updated_idxs], (255, 0, 0))
-
-      a3d.visualize([eroded_mesh, updated_pc], True)
-
-   .. container:: output stream stdout
-
-      ::
-
-         Iter:  0 , V_idx:  7693
-         Iter:  1 , V_idx:  1537
-         Iter:  2 , V_idx:  6131
-         ...
-         Iter:  97 , V_idx:  5687
-         Iter:  98 , V_idx:  120
-         Iter:  99 , V_idx:  192
-
-.. image:: img/monkey_erode_wireframe_direction.png
-  :alt: Monkey Erode Wirefram Direction 
-
-.. container:: cell code
-
-   .. code:: python
-
-      a3d.visualize([eroded_mesh, updated_pc])
-
-.. image:: img/monkey_erode_direction.png
-  :alt: Monkey Erode Wirefram Direction 
