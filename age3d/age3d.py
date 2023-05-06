@@ -25,7 +25,6 @@ def export_mesh(file_path: str, mesh):
 
     Args:
         file_path (str): The file path where the mesh will be saved.
-
         mesh: The mesh to be exported.
 
     Returns:
@@ -58,7 +57,7 @@ def mesh_details(mesh) -> tuple:
 
     Returns:
         tuple: A tuple of two numpy arrays. The first array contains the vertices of the mesh
-        and the second array contains the triangles of the mesh.
+               and the second array contains the triangles of the mesh.
     """
     return (np.asarray(mesh.vertices), np.asarray(mesh.triangles))
 
@@ -69,7 +68,6 @@ def visualize(entries, show_wireframe=False) -> None:
 
     Args:
         entries: The mesh/meshes to be visualized. It can be a single mesh or a list of meshes.
-
         show_wireframe (bool): A flag to show/hide the wireframe of the mesh/meshes.
 
     Returns:
@@ -88,7 +86,6 @@ def get_mask(mesh, idx):
 
     Args:
         mesh: The mesh for which the mask is to be created.
-
         idx: The index of the vertex for which the mask is to be created.
 
     Returns:
@@ -106,9 +103,7 @@ def find_minimum(mesh, k: int = 1, idx_mask=[]):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): The input mesh.
-
         k (int, optional):: The number of minimum vertices to be found.
-
         idx_mask (list, optional): A list of indices of vertices to be considered for finding minimum vertices.
 
     Returns:
@@ -138,9 +133,7 @@ def find_maximum(mesh, k: int = 1, idx_mask=[]):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): The input mesh.
-
         k (int, optional): The number of maximum values to return. Defaults to 1.
-
         idx_mask (list, optional): List of vertex indices to consider for the maximum search. Defaults to empty list.
 
     Returns:
@@ -170,9 +163,7 @@ def find_all_below(mesh, value: float, inclusive=False):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): The input mesh.
-
         value (float): The value below which to find vertices.
-
         inclusive (bool, optional): Whether to include vertices with value equal to the given value. Defaults to False.
 
     Returns:
@@ -203,9 +194,7 @@ def find_all_above(mesh, value: float, inclusive=False):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): The input mesh.
-
         value (float): The value above which to find vertices.
-
         inclusive (bool, optional): Whether to include vertices with value equal to the given value. Defaults to False.
 
     Returns:
@@ -236,9 +225,7 @@ def find_all_between(mesh, lower_value: float, higher_value: float) -> np.ndarra
 
     Args:
         mesh (open3d.geometry.TriangleMesh): A triangle mesh object.
-
         lower_value (float): The lower bound of the z-coordinate.
-
         higher_value (float): The higher bound of the z-coordinate.
 
     Returns:
@@ -260,7 +247,6 @@ def make_point_cloud(vertices, color):
 
     Args:
         vertices (np.ndarray): A NumPy array of vertices.
-
         color (tuple): A tuple of RGB values (0-255).
 
     Returns:
@@ -278,7 +264,6 @@ def find_neighbors(mesh, index: int):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): A triangle mesh object.
-
         index (int): The index of the vertex.
 
     Returns:
@@ -302,7 +287,6 @@ def mesh_subdivision(mesh, iterations=1):
 
     Args:
         mesh (open3d.geometry.TriangleMesh): A triangle mesh object.
-
         iterations (int): The number of times to subdivide the mesh.
 
     Returns:
@@ -330,68 +314,14 @@ def calculate_bounds_height(mesh):
     return min(min_x_vertex[2], max_x_vertex[2], min_y_vertex[2], max_y_vertex[2])
 
 
-def find_accessible(mesh, rain_direction):
-    """
-    Returns the indices and coordinates of the vertices accessible by a given angle of particles' direction.
-
-    Args:
-        mesh (open3d.geometry.TriangleMesh): The mesh to check.
-
-        rain_direction (numpy.ndarray): The direction angle of the rain as a numpy array of shape (3,).
-            If direction is [0,0,0], every vertex is chosen.
-
-    Returns:
-        Tuple[np.ndarray, np.ndarray]: A tuple of two NumPy arrays
-        representing the neighboring vertex indices and coordinates.
-    """
-    rain_direction = np.asarray(rain_direction)
-    # if rain_direction[2] == 0:
-    #     return np.array([]), np.array([])
-    raycast_angle = rain_direction * -1
-    # print(raycast_angle, type(rain_direction))
-    mesh_vertices_np = np.asarray(mesh.vertices)
-
-    angle_np = np.full(mesh_vertices_np.shape, raycast_angle)
-    ray_np = np.append(mesh_vertices_np, angle_np, axis=1)
-
-    rays = o3d.core.Tensor(ray_np, dtype=o3d.core.Dtype.Float32)
-    # print('ray', rays)
-    rays[:, 0] += 1e-6 * np.sign(raycast_angle[0])
-    rays[:, 1] += 1e-6 * np.sign(raycast_angle[1])
-    rays[:, 2] += 1e-6 * np.sign(raycast_angle[2])
-
-    # print('ray added', rays)
-    raycasting_scene = o3d.t.geometry.RaycastingScene()
-    mesh_legacy = o3d.t.geometry.TriangleMesh.from_legacy(mesh)
-    _ = raycasting_scene.add_triangles(mesh_legacy)
-    collision = raycasting_scene.cast_rays(rays)
-
-    idx = []
-    res = []
-    collisions_hit = collision['t_hit'].numpy()
-    # print('hit', collisions_hit)
-
-    for v, vertex in enumerate(mesh_vertices_np):
-        if collisions_hit[v] == np.inf:
-            idx.append(v)
-            res.append(vertex)
-    return np.array(idx), np.array(res).reshape((-1, 3))
-
-
-def erode(mesh: o3d.geometry.TriangleMesh, iterations: int = 2, erosion_lifetime: int = 10, direction=None, verbose=[]):
+def erode(mesh: o3d.geometry.TriangleMesh, iterations: int = 2, erosion_lifetime: int = 10, verbose: list = []):
     """
     Erodes the mesh using the particle deposition and erosion method.
 
     Args:
         mesh (open3d.geometry.TriangleMesh): The mesh to be eroded.
-
         iterations (int, optional): The number of iterations for the erosion process. Defaults to 2.
-
         erosion_lifetime (int, optional): The maximum number of times a vertex can be eroded. Defaults to 10.
-
-        direction (numpy.ndarray, optional): The direction of the rain as a numpy array of shape (3,).
-            If not provided, the vertex mask is calculated from the mesh's bounding box. Defaults to None.
-
         verbose (list[str], optional): A list of strings containing information to be printed.
             Possible strings include 'all', 'vertex_progression', 'vector_direction',
             'vector_angle', 'ray', 'ray_scene', 'mesh', and 'collision'.
@@ -416,10 +346,7 @@ def erode(mesh: o3d.geometry.TriangleMesh, iterations: int = 2, erosion_lifetime
     if len(verbose) > 0:
         print('Printing with Settings:', verbose)
 
-    if direction is None:
-        vertices_idx, vertices = find_all_above(mesh, calculate_bounds_height(mesh), True)
-    else:
-        vertices_idx, vertices = find_accessible(mesh, rain_direction=direction)
+    vertices_idx, vertices = find_all_above(mesh, calculate_bounds_height(mesh), True)
 
     set_vertices_idx = set()
     for idx in vertices_idx:
@@ -450,7 +377,7 @@ def erode(mesh: o3d.geometry.TriangleMesh, iterations: int = 2, erosion_lifetime
             neighbors_idx, _ = find_neighbors(new_mesh, v_idx_curr)
             v_idx_next = int(find_minimum(new_mesh, 1, neighbors_idx)[0])
 
-            if v_idx_next not in vertices_idx and direction is None:
+            if v_idx_next not in vertices_idx:
                 break
 
             if v_idx_prev:
