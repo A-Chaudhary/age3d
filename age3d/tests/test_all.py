@@ -185,12 +185,29 @@ def test_find_neighbors():
     assert all(v_idx == [1, 2])
 
 
+@pytest.mark.parametrize(('direction', 'output_len'), [(np.array([0, 0, 0]), 2866), (np.array([0, 0, -1]), 687)])
+def test_find_accessible(direction, output_len):
+    mesh = o3d.geometry.TriangleMesh()
+    vertices = np.load('age3d/tests/monkey_vertices.npy')
+    triangles = np.load('age3d/tests/monkey_triangles.npy')
+    mesh.vertices = o3d.utility.Vector3dVector(vertices)
+    mesh.triangles = o3d.utility.Vector3iVector(triangles)
+    v_idx, vertices = age3d.find_accessible(mesh, rain_direction=direction)
+    print('len', len(v_idx))
+    assert len(v_idx) == output_len
+
+
 @pytest.mark.parametrize(
-    ('file_path', 'verbose'), [("age3d/models/monkey.stl", ['all']), ("age3d/models/monkey.stl", [])]
+    ('file_path', 'verbose', 'direction'),
+    [
+        ("age3d/models/monkey.stl", ['all'], None),
+        ("age3d/models/monkey.stl", [], None),
+        ("age3d/models/monkey.stl", [], np.array([0, 0, -1])),
+    ],
 )
-def test_full_run(file_path, verbose):
+def test_full_run(file_path, verbose, direction):
     mesh = age3d.import_mesh(file_path)
     mesh = age3d.mesh_subdivision(mesh, 2)
-    _, new_mesh = age3d.erode(mesh, iterations=50, erosion_lifetime=10, verbose=verbose)
+    _, new_mesh = age3d.erode(mesh, iterations=20, erosion_lifetime=10, direction=direction, verbose=verbose)
 
     assert all(np.asarray(mesh.triangles).flatten() == np.asarray(new_mesh.triangles).flatten())
