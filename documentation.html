@@ -48,6 +48,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#age3d.clean_mesh"><code class="docutils literal notranslate"><span class="pre">clean_mesh()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#age3d.erode"><code class="docutils literal notranslate"><span class="pre">erode()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#age3d.export_mesh"><code class="docutils literal notranslate"><span class="pre">export_mesh()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#age3d.find_accessible"><code class="docutils literal notranslate"><span class="pre">find_accessible()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_above"><code class="docutils literal notranslate"><span class="pre">find_all_above()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_below"><code class="docutils literal notranslate"><span class="pre">find_all_below()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#age3d.find_all_between"><code class="docutils literal notranslate"><span class="pre">find_all_between()</span></code></a></li>
@@ -124,7 +125,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="age3d.erode">
-<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">erode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TriangleMesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erosion_lifetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.erode" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">erode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TriangleMesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">erosion_lifetime</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.erode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Erodes the mesh using the particle deposition and erosion method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -132,6 +133,8 @@
 <li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The mesh to be eroded.</p></li>
 <li><p><strong>iterations</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of iterations for the erosion process. Defaults to 2.</p></li>
 <li><p><strong>erosion_lifetime</strong> (<em>int</em><em>, </em><em>optional</em>) – The maximum number of times a vertex can be eroded. Defaults to 10.</p></li>
+<li><p><strong>direction</strong> (<em>numpy.ndarray</em><em>, </em><em>optional</em>) – The direction of the rain as a numpy array of shape (3,).
+If not provided, the vertex mask is calculated from the mesh’s bounding box. Defaults to None.</p></li>
 <li><p><strong>verbose</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – A list of strings containing information to be printed.
 Possible strings include ‘all’, ‘vertex_progression’, ‘vector_direction’,
 ‘vector_angle’, ‘ray’, ‘ray_scene’, ‘mesh’, and ‘collision’.
@@ -174,6 +177,28 @@ indices and the eroded mesh.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="age3d.find_accessible">
+<span class="sig-prename descclassname"><span class="pre">age3d.</span></span><span class="sig-name descname"><span class="pre">find_accessible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rain_direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#age3d.find_accessible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the indices and coordinates of the vertices accessible by a given angle of particles’ direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<em>open3d.geometry.TriangleMesh</em>) – The mesh to check.</p></li>
+<li><p><strong>rain_direction</strong> (<em>numpy.ndarray</em>) – The direction angle of the rain as a numpy array of shape (3,).
+If direction is [0,0,0], every vertex is chosen.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple of two NumPy arrays
+representing the neighboring vertex indices and coordinates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -381,11 +406,8 @@ representing the neighboring vertex indices and coordinates.</p>
 <dd class="field-odd"><p><strong>mesh</strong> – The mesh for which the details are to be extracted.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>A tuple of two numpy arrays. The first array contains the vertices of the mesh</dt><dd><p>and the second array contains the triangles of the mesh.</p>
-</dd>
-</dl>
-</p>
+<dd class="field-even"><p>A tuple of two numpy arrays. The first array contains the vertices of the mesh
+and the second array contains the triangles of the mesh.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>tuple</p>
