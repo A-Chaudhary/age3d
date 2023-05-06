@@ -14,5 +14,6 @@ from .age3d import (
     get_mask,
     mesh_subdivision,
     calculate_bounds_height,
+    find_accessible,
     erode,
 )
