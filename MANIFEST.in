@@ -22,6 +22,7 @@ recursive-include docs Makefile
 recursive-include docs/img *.png
 
 include .readthedocs.yaml
+include docs/requirements.txt
 
 # Patterns to exclude from any directory
 global-exclude *~
