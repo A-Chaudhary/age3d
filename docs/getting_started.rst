@@ -68,7 +68,7 @@ Visualize Eroded Mesh:
 ::
 
     eroded_mesh.compute_vertex_normals()
-    age3d.visualize(mesh)
+    age3d.visualize(eroded_mesh)
 
 
 or
@@ -76,7 +76,7 @@ or
 ::
 
     eroded_mesh.compute_vertex_normals()
-    age3d.visualize([mesh])
+    age3d.visualize([eroded_mesh])
 
 
 
@@ -84,7 +84,7 @@ Visualize Mesh & Point Cloud:
 ::
 
     eroded_mesh.compute_vertex_normals()
-    age3d.visualize([mesh, point_cloud])
+    age3d.visualize([eroded_mesh, point_cloud])
 
 
 
@@ -93,5 +93,9 @@ Visualize Mesh & Point Cloud with Wireframe:
 ::
 
     eroded_mesh.compute_vertex_normals()
-    age3d.visualize([mesh, point_cloud], show_wireframe = True)
+    age3d.visualize([eroded_mesh, point_cloud], show_wireframe = True)
 
+.. image:: img/monkey_wireframe.png
+  :alt: monkey_wireframe
+  :width: 100%
+  :align: center
