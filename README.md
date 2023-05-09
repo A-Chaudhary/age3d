@@ -18,12 +18,13 @@ A Python Library to age 3d models by simulating the effects of weather
 Age3D is a Python Library that allows for eroding of 3d models. It uses the `.stl` file format and incorporates Open3D functionality, allowing users to simulate material removal.
 
 Features:
-- Simplified Workflow for `.stl` $\rightarrow$ `TriangleMesh` $\rightarrow$ `PointCloud` & `BitMask`
-- Visualization of `TriangleMesh` & `PointCloud`
-- Calculate Metric of `TriangleMesh`
-- Erosion Method for Aging
-  - Customizable Number of Passes of Simulated Erosion Particles
-  - Customizable lifetime of Simulated Erosion Particles
+
+- Conversion of `.stl` to `TriangleMesh`
+- Allows for Segmentation of Mesh Vertices based on Height Params
+- Erodes Mesh by Simulating Erosion Particles
+  - Customizable Number of Particles
+  - Customizable Lifetime of Particles
+  - Performs Raycasting Computation to Only Remove Material
 
 ## Dependencies
 

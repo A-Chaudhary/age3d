@@ -13,6 +13,17 @@ Age3d: A 3D Simulation for Erosion
 Welcome to the Age3d Library. 
 Age3D is a Python Library that allows for eroding of 3d models. 
 It uses the .stl file format and incorporates Open3D functionality, allowing users to simulate material removal.
+
+Features:
+
+-  Conversion of ``.stl`` to ``TriangleMesh``
+-  Allows for Segmentation of Mesh Vertices based on Height Params
+-  Erodes Mesh by Simulating Erosion Particles
+
+   -  Customizable Number of Particles
+   -  Customizable Lifetime of Particles
+   -  Performs Raycasting Computation to Only Remove Material
+
 For a quickstart, Use the Getting Started which includes Installation of the library.
 
 .. toctree::
