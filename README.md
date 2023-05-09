@@ -1,3 +1,6 @@
+![age3d Logo](docs/img/age3d_logo.png)
+
+
 # age3d
 A Python Library to age 3d models by simulating the effects of weather 
 
@@ -75,25 +78,28 @@ point_cloud = age3d.make_point_cloud(mesh, color = [255, 0, 0])
 Visualize Eroded Mesh:
 ```
 eroded_mesh.compute_vertex_normals()
-age3d.visualize(mesh)
+age3d.visualize(eroded_mesh)
 ```
 or
 ```
 eroded_mesh.compute_vertex_normals()
-age3d.visualize([mesh])
+age3d.visualize([eroded_mesh])
 ```
 
 Visualize Mesh & Point Cloud:
 ```
 eroded_mesh.compute_vertex_normals()
-age3d.visualize([mesh, point_cloud])
+age3d.visualize([eroded_mesh, point_cloud])
 ```
 
 Visualize Mesh & Point Cloud with Wireframe:
 ```
 eroded_mesh.compute_vertex_normals()
-age3d.visualize([mesh, point_cloud], show_wireframe = True)
+age3d.visualize([eroded_mesh, point_cloud], show_wireframe = True)
 ```
+
+![age3d Logo](docs/img/monkey_wireframe.png)
+
 
 ## Contributing
 If you encounter an issue, please feel free to raise it by opening an issue. Likewise, if you have resolved an issue, you are welcome to open a pull request.

@@ -1,10 +1,8 @@
 Examples
 ========
 
-.. container:: cell markdown
-
-   .. rubric:: Import Library
-      :name: import-library
+Import Library
+--------------
 
 .. container:: cell code
 
@@ -20,10 +18,8 @@ Examples
          [Open3D INFO] WebRTC GUI backend enabled.
          [Open3D INFO] WebRTCWindowSystem: HTTP handshake server disabled.
 
-.. container:: cell markdown
-
-   .. rubric:: Import Mesh
-      :name: import-mesh
+Import Mesh
+-----------
 
 .. container:: cell code
 
@@ -40,10 +36,8 @@ Examples
 
          TriangleMesh with 2866 points and 968 triangles.
 
-.. container:: cell markdown
-
-   .. rubric:: Export Mesh
-      :name: export-mesh
+Export Mesh
+-----------
 
 .. container:: cell code
 
@@ -52,10 +46,8 @@ Examples
       export_file_path = 'models/export.stl'
       a3d.export_mesh(export_file_path ,mesh)
 
-.. container:: cell markdown
-
-   .. rubric:: Clean Mesh
-      :name: clean-mesh
+Clean Mesh
+----------
 
 .. container:: cell code
 
@@ -97,10 +89,8 @@ Examples
           [493 384 380]
           [493 380 412]]
 
-.. container:: cell markdown
-
-   .. rubric:: Point Cloud Creation
-      :name: point-cloud-creation
+Point Cloud Creation
+--------------------
 
 .. container:: cell code
 
@@ -108,10 +98,8 @@ Examples
 
       pc = a3d.make_point_cloud(vertices, (255, 0, 0))
 
-.. container:: cell markdown
-
-   .. rubric:: Visualization
-      :name: visualization
+Visualization
+-------------
 
 .. container:: cell code
 
@@ -140,10 +128,8 @@ Examples
 .. image:: img/monkey_pc.png
   :alt: Monkey
 
-.. container:: cell markdown
-
-   .. rubric:: Get Vertex Mask
-      :name: get-vertex-mask
+Get Vertex Mask
+---------------
 
 .. container:: cell code
 
@@ -163,10 +149,8 @@ Examples
                 False, False, False, False, False, False, False, False, False,
                  True])
 
-.. container:: cell markdown
-
-   .. rubric:: Find Minimum(s) & Maximum(s)
-      :name: find-minimums--maximums
+Find Minimum(s) & Maximum(s)
+----------------------------
 
 .. container:: cell code
 
@@ -183,10 +167,8 @@ Examples
 .. image:: img/monkey_min_max.png
   :alt: Monkey Min Max
 
-.. container:: cell markdown
-
-   .. rubric:: Find All Below, Above, & Between
-      :name: find-all-below-above--between
+Find All Below, Above, & Between
+--------------------------------
 
 .. container:: cell code
 
@@ -206,10 +188,8 @@ Examples
 .. image:: img/monkey_below_above_between.png
   :alt: Monkey Below Above Between
 
-.. container:: cell markdown
-
-   .. rubric:: Find Neighbors
-      :name: find-neighbors
+Find Neighbors
+--------------
 
 .. container:: cell code
 
@@ -227,10 +207,8 @@ Examples
 .. image:: img/monkey_neighbors.png
   :alt: Monkey Neighbors
 
-.. container:: cell markdown
-
-   .. rubric:: Mesh Subdivision
-      :name: mesh-subdivision
+Mesh Subdivision
+----------------
 
 .. container:: cell code
 
@@ -268,10 +246,8 @@ Examples
          [7827 1924 7825]
          [7826 7827 7825]]
 
-.. container:: cell markdown
-
-   .. rubric:: Bound Height
-      :name: bound-height
+Bound Height
+------------
 
 .. container:: cell code
 
@@ -297,10 +273,8 @@ Examples
 
       0.296875
 
-.. container:: cell markdown
-
-   .. rubric:: Find Accessible
-      :name: find-accessible
+Find Accessible
+---------------
 
 .. container:: cell code
 
@@ -314,10 +288,8 @@ Examples
 .. image:: img/monkey_accessible.png
   :alt: Monkey Erode Wirefram Direction 
 
-.. container:: cell markdown
-
-   .. rubric:: Erode
-      :name: erode
+Erode
+-----
 
 .. container:: cell code
 
@@ -378,7 +350,7 @@ Examples
          Iter:  99 , V_idx:  192
 
 .. image:: img/monkey_erode_wireframe_direction.png
-  :alt: Monkey Erode Wirefram Direction 
+  :alt: Monkey Erode Wireframe Direction 
 
 .. container:: cell code
 
@@ -387,4 +359,4 @@ Examples
       a3d.visualize([eroded_mesh, updated_pc])
 
 .. image:: img/monkey_erode_direction.png
-  :alt: Monkey Erode Wirefram Direction 
+  :alt: Monkey Erode Direction 
