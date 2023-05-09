@@ -17,7 +17,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Functions" href="documentation.html" /> 
+    <link rel="prev" title="API Reference" href="documentation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,11 +39,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-library">Import Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-mesh">Import Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#export-mesh">Export Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clean-mesh">Clean Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#point-cloud-creation">Point Cloud Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-vertex-mask">Get Vertex Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-minimum-s-maximum-s">Find Minimum(s) &amp; Maximum(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-all-below-above-between">Find All Below, Above, &amp; Between</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-neighbors">Find Neighbors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-subdivision">Mesh Subdivision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bound-height">Bound Height</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#find-accessible">Find Accessible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#erode">Erode</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -72,9 +88,8 @@
              
   <section id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
-<div class="cell markdown docutils container">
-<p class="rubric" id="import-library">Import Library</p>
-</div>
+<section id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">age3d</span> <span class="k">as</span> <span class="nn">a3d</span>
 </pre></div>
@@ -87,9 +102,9 @@
 </div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="import-mesh">Import Mesh</p>
-</div>
+</section>
+<section id="import-mesh">
+<h2>Import Mesh<a class="headerlink" href="#import-mesh" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;models/monkey.stl&#39;</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">import_mesh</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
@@ -103,18 +118,18 @@
 </div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="export-mesh">Export Mesh</p>
-</div>
+</section>
+<section id="export-mesh">
+<h2>Export Mesh<a class="headerlink" href="#export-mesh" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">export_file_path</span> <span class="o">=</span> <span class="s1">&#39;models/export.stl&#39;</span>
 <span class="n">a3d</span><span class="o">.</span><span class="n">export_mesh</span><span class="p">(</span><span class="n">export_file_path</span> <span class="p">,</span><span class="n">mesh</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="clean-mesh">Clean Mesh</p>
-</div>
+</section>
+<section id="clean-mesh">
+<h2>Clean Mesh<a class="headerlink" href="#clean-mesh" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original:&#39;</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
 <span class="n">a3d</span><span class="o">.</span><span class="n">clean_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
@@ -151,17 +166,17 @@
 </div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="point-cloud-creation">Point Cloud Creation</p>
-</div>
+</section>
+<section id="point-cloud-creation">
+<h2>Point Cloud Creation<a class="headerlink" href="#point-cloud-creation" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pc</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">make_point_cloud</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="visualization">Visualization</p>
-</div>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 </pre></div>
@@ -180,9 +195,9 @@
 </div>
 </div>
 <img alt="Monkey" src="_images/monkey_pc.png" />
-<div class="cell markdown docutils container">
-<p class="rubric" id="get-vertex-mask">Get Vertex Mask</p>
-</div>
+</section>
+<section id="get-vertex-mask">
+<h2>Get Vertex Mask<a class="headerlink" href="#get-vertex-mask" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a3d</span><span class="o">.</span><span class="n">get_mask</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
@@ -199,9 +214,9 @@
 </div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="find-minimums-maximums">Find Minimum(s) &amp; Maximum(s)</p>
-</div>
+</section>
+<section id="find-minimum-s-maximum-s">
+<h2>Find Minimum(s) &amp; Maximum(s)<a class="headerlink" href="#find-minimum-s-maximum-s" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">min_idxs</span><span class="p">,</span> <span class="n">min_vertices</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">find_minimum</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">min_pc</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">make_point_cloud</span><span class="p">(</span><span class="n">min_vertices</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">00</span><span class="p">))</span>
@@ -214,9 +229,9 @@
 </div>
 </div>
 <img alt="Monkey Min Max" src="_images/monkey_min_max.png" />
-<div class="cell markdown docutils container">
-<p class="rubric" id="find-all-below-above-between">Find All Below, Above, &amp; Between</p>
-</div>
+</section>
+<section id="find-all-below-above-between">
+<h2>Find All Below, Above, &amp; Between<a class="headerlink" href="#find-all-below-above-between" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">below_idxs</span><span class="p">,</span> <span class="n">below_vertices</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">find_all_below</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">inclusive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">below_pc</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">make_point_cloud</span><span class="p">(</span><span class="n">below_vertices</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
@@ -232,9 +247,9 @@
 </div>
 </div>
 <img alt="Monkey Below Above Between" src="_images/monkey_below_above_between.png" />
-<div class="cell markdown docutils container">
-<p class="rubric" id="find-neighbors">Find Neighbors</p>
-</div>
+</section>
+<section id="find-neighbors">
+<h2>Find Neighbors<a class="headerlink" href="#find-neighbors" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">center_idx</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">neighbors_idx</span><span class="p">,</span> <span class="n">neighbors_vertices</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">find_neighbors</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">center_idx</span><span class="p">)</span>
@@ -248,9 +263,9 @@
 </div>
 </div>
 <img alt="Monkey Neighbors" src="_images/monkey_neighbors.png" />
-<div class="cell markdown docutils container">
-<p class="rubric" id="mesh-subdivision">Mesh Subdivision</p>
-</div>
+</section>
+<section id="mesh-subdivision">
+<h2>Mesh Subdivision<a class="headerlink" href="#mesh-subdivision" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 <span class="n">mesh</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">mesh_subdivision</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -283,9 +298,9 @@
 </pre></div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="bound-height">Bound Height</p>
-</div>
+</section>
+<section id="bound-height">
+<h2>Bound Height<a class="headerlink" href="#bound-height" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bound_height</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">calculate_bounds_height</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bound_height</span><span class="p">)</span>
@@ -306,9 +321,9 @@
 </pre></div>
 </div>
 </div>
-<div class="cell markdown docutils container">
-<p class="rubric" id="find-accessible">Find Accessible</p>
-</div>
+</section>
+<section id="find-accessible">
+<h2>Find Accessible<a class="headerlink" href="#find-accessible" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">direction</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">accessible_idx</span><span class="p">,</span> <span class="n">accessible_vertices</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">find_accessible</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
@@ -318,9 +333,9 @@
 </div>
 </div>
 <img alt="Monkey Erode Wirefram Direction" src="_images/monkey_accessible.png" />
-<div class="cell markdown docutils container">
-<p class="rubric" id="erode">Erode</p>
-</div>
+</section>
+<section id="erode">
+<h2>Erode<a class="headerlink" href="#erode" title="Permalink to this heading">¶</a></h2>
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">updated_idxs</span><span class="p">,</span> <span class="n">eroded_mesh</span> <span class="o">=</span> <span class="n">a3d</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">erosion_lifetime</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">eroded_mesh</span><span class="o">.</span><span class="n">compute_vertex_normals</span><span class="p">()</span>
@@ -370,20 +385,21 @@
 </div>
 </div>
 </div>
-<img alt="Monkey Erode Wirefram Direction" src="_images/monkey_erode_wireframe_direction.png" />
+<img alt="Monkey Erode Wireframe Direction" src="_images/monkey_erode_wireframe_direction.png" />
 <div class="cell code docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a3d</span><span class="o">.</span><span class="n">visualize</span><span class="p">([</span><span class="n">eroded_mesh</span><span class="p">,</span> <span class="n">updated_pc</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<img alt="Monkey Erode Wirefram Direction" src="_images/monkey_erode_direction.png" />
+<img alt="Monkey Erode Direction" src="_images/monkey_erode_direction.png" />
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="documentation.html" class="btn btn-neutral float-left" title="Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documentation.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

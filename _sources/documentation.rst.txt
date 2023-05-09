@@ -1,5 +1,5 @@
-Functions
-=========
+API Reference
+=============
 
 .. automodule:: age3d
    :members:
