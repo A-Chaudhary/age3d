@@ -33,6 +33,7 @@ For a quickstart, Use the Getting Started which includes Installation of the lib
    getting_started
    documentation
    examples
+   contributing
 
 Indices and tables
 ==================
