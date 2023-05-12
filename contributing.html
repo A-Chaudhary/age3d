@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contributing to age3d &mdash; age3d 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Examples" href="examples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            age3d
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to age3d</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#issues">Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-features">New Features</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">age3d</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Contributing to age3d</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contributing-to-age3d">
+<h1>Contributing to age3d<a class="headerlink" href="#contributing-to-age3d" title="Permalink to this heading">¶</a></h1>
+<p>Also see <a class="reference external" href="https://github.com/A-Chaudhary/age3d/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+<section id="environment-setup">
+<h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">¶</a></h2>
+<p>To get started with developing on zkpy, run the following steps:</p>
+<ol class="arabic simple">
+<li><p>Clone age3d from git</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">A</span><span class="o">-</span><span class="n">Chaudhary</span><span class="o">/</span><span class="n">age3d</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">age3d</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Create and load a virtual environment</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">venv</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Install dev dependencies</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">develop</span>
+</pre></div>
+</div>
+</section>
+<section id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this heading">¶</a></h2>
+<p>In case you identify an issue, kindly verify if it has already been
+reported or not. If not, you can create a new issue to report it <a class="reference external" href="https://github.com/A-Chaudhary/age3d/issues">here</a>.</p>
+<p>Moreover, you can browse through the current issues to identify any
+problems that require attention. If you want to address a specific
+issue, you are welcome to open a pull request to solve it.</p>
+</section>
+<section id="pull-requests">
+<h2>Pull Requests<a class="headerlink" href="#pull-requests" title="Permalink to this heading">¶</a></h2>
+<p>Please feel encouraged to make pull requests for changes and new
+features! Before making a pull request, ensure the following works:</p>
+<ol class="arabic simple">
+<li><p>All tests pass</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Lint passes</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">lint</span>
+</pre></div>
+</div>
+<p>If needed, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">fix</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Ensure all checks pass on Github</p></li>
+</ol>
+</section>
+<section id="new-features">
+<h2>New Features<a class="headerlink" href="#new-features" title="Permalink to this heading">¶</a></h2>
+<p>If there is a specific feature that you would like added, please feel
+free to open a issue with details about the feature.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Abhishek Chaudhary.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
